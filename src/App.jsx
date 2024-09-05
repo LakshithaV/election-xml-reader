@@ -4,7 +4,7 @@ import { XMLParser } from 'fast-xml-parser';
 export default function App() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [fileInputKey, setFileInputKey] = useState(Date.now()); // Key to reset file input
+  const [fileInputKey, setFileInputKey] = useState(Date.now());
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -29,7 +29,7 @@ export default function App() {
   const handleClear = () => {
     setData(null);
     setError(null);
-    setFileInputKey(Date.now()); // Reset file input by changing the key
+    setFileInputKey(Date.now());
   };
 
   const renderTable = () => {
@@ -47,6 +47,7 @@ export default function App() {
     return (
       <>
         <h1 className="text-2xl font-semibold mb-4">Electoral District: {data.result.ed_name}</h1>
+        <h2 className="text-xl font-semibold mb-4">Polling Division: {data.result.pd_name}</h2>
         <table className="min-w-full bg-white border-collapse border">
           <thead>
             <tr className="bg-gray-200">
@@ -66,7 +67,7 @@ export default function App() {
     <div className="App p-6 bg-gray-100 min-h-screen">
       <h2 className="text-xl font-bold mb-4">Upload XML File</h2>
       <input
-        key={fileInputKey} // Reset the input when the key changes
+        key={fileInputKey}
         type="file"
         accept=".xml"
         onChange={handleFileUpload}
@@ -85,4 +86,3 @@ export default function App() {
     </div>
   );
 }
-
